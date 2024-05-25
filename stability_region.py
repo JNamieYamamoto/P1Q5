@@ -1,7 +1,8 @@
+
 import numpy as np
 import matplotlib.pyplot as plt
 
-def funcao_estabilidade(z, W):
+def fator_amplificacao(z, W):
     return 1 + z + W * z**2
 
 def plot_regiao_estabilidade(ax, W):
@@ -10,7 +11,7 @@ def plot_regiao_estabilidade(ax, W):
     X, Y = np.meshgrid(x, y)
     Z = X + 1j * Y
 
-    R = funcao_estabilidade(Z, W)
+    R = fator_amplificacao(Z, W)
     abs_R = np.abs(R)
     contour = ax.contour(X, Y, abs_R, levels=[1], colors='black')
     ax.contourf(X, Y, abs_R, levels=[0, 1], colors='black', alpha=0.1)
@@ -31,3 +32,5 @@ for ax, W in zip(axs, W_values):
 
 plt.tight_layout()
 plt.show()
+
+
